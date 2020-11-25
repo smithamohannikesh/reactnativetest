@@ -13,7 +13,7 @@ const stack=createStackNavigator();
                     component={Reagion}
                     options={
                         {
-                            title:"Reagion",
+                            title:"Region",
                             headerStyle:{
                                 backgroundColor:"gray"
 

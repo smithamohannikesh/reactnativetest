@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View,Text,TextInput} from 'react-native';
+import { View,Text,TextInput,StyleSheet} from 'react-native';
 import { State, TouchableOpacity} from 'react-native-gesture-handler'
 import {useDispatch,useSelector} from 'react-redux';
 
@@ -9,45 +9,57 @@ import {connect} from 'react-redux';
 
 
 
-   export const Reagion =( navigation:any)=>{
+   export const Reagion =({navigation}:any)=>{
     const dispatch =useDispatch();
     const [inputValue,inputvalue]=useState('');
-   const posts:any=useSelector((state:any)=>state.app.post)
-   console.log(posts);
+   //const posts:any=useSelector((state:any)=>state.app.post)
+  // console.log(posts);
  //  async  componentWillMount(){
  //   dispatch(getdata());
     
  // }
-    useEffect(()=>{
+ //   useEffect(()=>{
       
-      dispatch(getdata());
+   //   dispatch(getdata());
       
-    })
+   // })
 
     const submitcountry=()=>{
-        console.log("dd");
-      // console.log(posts[0]);
-       navigation.navigate('Country',{
-            selectedReagion:inputValue
-      })
-     
-
-      
-
+        //console.log(inputValue);
+     // getdata(inputValue,navigation)
+    dispatch( getdata(inputValue,navigation))
     }
     
     return(
         
         <View>
-            <TextInput onChangeText={(value:string)=>inputvalue(value)}>
+            <TextInput style={styles.input} onChangeText={(value:string)=>inputvalue(value)}>
             
 
             </TextInput>
-            <TouchableOpacity onPress={ ()=> submitcountry()} >
-                <Text>Submitttt</Text>
+            <TouchableOpacity onPress={ ()=> submitcountry()}   style={styles.Button} >
+                <Text>Submit</Text>
             </TouchableOpacity>
           
         </View>
     )
 
 }
+const styles = StyleSheet.create({
+    input: {
+        borderRadius: 5,
+        borderColor: '#ccc',
+        borderWidth:1,
+        marginBottom:20,
+        padding: 5
+      },
+      Button: {
+        backgroundColor: '#0984e3',
+        borderRadius: 5,
+        marginBottom: 20,
+        height: 40,
+        justifyContent: 'center'
+    
+      },
+
+})
