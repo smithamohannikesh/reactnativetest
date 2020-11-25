@@ -5,7 +5,7 @@ import {useDispatch,useSelector} from 'react-redux';
 
 import {getdata} from '../redux/action/action'
 import {connect} from 'react-redux';
-import { unmountComponentAtNode } from 'react-dom';
+
 
 
 
@@ -14,31 +14,37 @@ import { unmountComponentAtNode } from 'react-dom';
     const [inputValue,inputvalue]=useState('');
    const posts:any=useSelector((state:any)=>state.app.post)
    console.log(posts);
-   
+ //  async  componentWillMount(){
+ //   dispatch(getdata());
+    
+ // }
     useEffect(()=>{
-       // console.log("fhdhf
+      
       dispatch(getdata());
       
     })
+
     const submitcountry=()=>{
-        console.log("dhhg");
-        console.log(posts[0]);
-       // navigation.navigate('Country',{
-           // selectedReagion:inputValue
-      // })
+        console.log("dd");
+      // console.log(posts[0]);
+       navigation.navigate('Country',{
+            selectedReagion:inputValue
+      })
      
 
       
 
     }
+    
     return(
+        
         <View>
             <TextInput onChangeText={(value:string)=>inputvalue(value)}>
             
 
             </TextInput>
-            <TouchableOpacity onPress={ ()=> {submitcountry()}} >
-                <Text>Submit</Text>
+            <TouchableOpacity onPress={ ()=> submitcountry()} >
+                <Text>Submitttt</Text>
             </TouchableOpacity>
           
         </View>

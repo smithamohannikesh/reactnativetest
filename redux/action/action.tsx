@@ -7,14 +7,15 @@ import CONSTS from '../../constants/constants'
 export const getdata=()=>{
     
     return async(dispatch:any)=>{
-        console.log({http});
+       // console.log({http});
 try{
     
     const response: any = await http.get(`countries`);
     if (response && response.data) {
-        const posts=response.data
-       
-        dispatch({ type: CONSTS.GET_REAGION, posts })
+        
+       // const resultData = await response.json()
+        console.log(response);
+        dispatch({ type: CONSTS.GET_REAGION, response })
         
     }
 } catch (error) {

@@ -2,14 +2,14 @@
 
 import * as React from 'react';
 import { ScrollView, StyleSheet, Text } from 'react-native';
-
-export const Country = (props: any) => {
-    const post: any = props.route.params.selectedReagion
+import {useDispatch,useSelector} from 'react-redux';
+export const Country = (selectedReagion: string) => {
+    const posts:any=useSelector((state:any)=>state.app.post)
     return (
         <ScrollView testID="details-wrapper" >
             <Text >
-                {JSON.stringify(post, null, 10)}
+                {posts.selectedReagion}
             </Text>
         </ScrollView>
-    );
+    )
 }
